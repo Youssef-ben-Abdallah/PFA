@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>{{ isEdit ? 'Edit' : 'Add' }} Category</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name">
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <button type="submit" [disabled]="categoryForm.invalid">Save</button>
+    <button type="button" (click)="router.navigate(['/oltp/categories'])">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="NetDwhProject.API/NetDwhProject.API.csproj" />
+  <Project Path="NetDwhProject.Core/NetDwhProject.Core.csproj" />
+  <Project Path="NetDwhProject.Infrastructure/NetDwhProject.Infrastructure.csproj" />
+</Solution>

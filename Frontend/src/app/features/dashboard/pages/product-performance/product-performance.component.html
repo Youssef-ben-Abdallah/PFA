@@ -1,0 +1,46 @@
+<div class="dashboard-page">
+  <app-filter-bar (filterChange)="filterService.updateFilters($event)"></app-filter-bar>
+
+  <h2>Product Performance</h2>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Category / SubCategory Sales</h3>
+      <table>
+        <tr><th>Category</th><th>SubCategory</th><th>Sales</th></tr>
+        <tr *ngFor="let item of categoryData">
+          <td>{{ item.category }}</td><td>{{ item.subCategory }}</td>
+          <td>{{ item.sales | currency }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="chart-container">
+      <h3>Top 15 Products by Gross Profit</h3>
+      <canvas baseChart
+        [data]="topProfitChartData"
+        chartType="bar">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Units vs Margin %</h3>
+      <canvas baseChart
+        [data]="scatterChartData"
+        chartType="scatter">
+      </canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Product Matrix</h3>
+      <table>
+        <tr><th>Category</th><th>SubCategory</th><th>Product</th><th>Sales</th><th>Units</th><th>Profit</th><th>Margin</th></tr>
+        <tr *ngFor="let item of matrixData">
+          <td>{{ item.category }}</td><td>{{ item.subCategory }}</td><td>{{ item.product }}</td>
+          <td>{{ item.sales | currency }}</td><td>{{ item.units }}</td>
+          <td>{{ item.profit | currency }}</td><td>{{ item.margin | percent }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

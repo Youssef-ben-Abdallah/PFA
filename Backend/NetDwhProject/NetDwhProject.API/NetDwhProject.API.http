@@ -1,0 +1,6 @@
+@NetDwhProject.API_HostAddress = http://localhost:5125
+
+GET {{NetDwhProject.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

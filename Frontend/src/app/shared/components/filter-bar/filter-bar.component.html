@@ -1,0 +1,21 @@
+<div class="filter-bar">
+  <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+    <label>
+      From:
+      <input type="date" formControlName="from">
+    </label>
+    <label>
+      To:
+      <input type="date" formControlName="to">
+    </label>
+    <label>
+      Territory:
+      <select formControlName="territoryId">
+        <option value="">All</option>
+        <!-- Populate via API if needed -->
+      </select>
+    </label>
+    <button type="submit">Apply</button>
+    <button type="button" (click)="reset()">Reset</button>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div class="dashboard-page">
+  <app-filter-bar (filterChange)="filterService.updateFilters($event)"></app-filter-bar>
+
+  <h2>Currency Analysis</h2>
+  <p>This page is optional. If your DWH contains currency data, you can display exchange rates and sales by currency here.</p>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Exchange Rates Over Time</h3>
+      <canvas baseChart [data]="ratesData" chartType="line"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Sales by Currency</h3>
+      <canvas baseChart [data]="salesByCurrencyData" chartType="bar"></canvas>
+    </div>
+  </div>
+</div>

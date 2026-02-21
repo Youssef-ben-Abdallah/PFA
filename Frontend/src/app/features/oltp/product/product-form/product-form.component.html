@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>{{ isEdit ? 'Edit' : 'Add' }} Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name</label>
+      <input type="text" formControlName="name">
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div>
+      <label>Price</label>
+      <input type="number" formControlName="price">
+    </div>
+    <div>
+      <label>Stock</label>
+      <input type="number" formControlName="stock">
+    </div>
+    <div>
+      <label>SubCategory ID</label>
+      <input type="number" formControlName="subCategoryId">
+    </div>
+    <button type="submit" [disabled]="productForm.invalid">Save</button>
+    <button type="button" (click)="router.navigate(['/oltp/products'])">Cancel</button>
+  </form>
+</div>

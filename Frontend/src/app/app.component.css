@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+.nav-left a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.nav-left a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.nav-right span {
+  margin-right: 15px;
+}
+main {
+  padding: 20px;
+}

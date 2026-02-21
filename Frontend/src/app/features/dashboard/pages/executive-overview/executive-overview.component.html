@@ -1,0 +1,52 @@
+<div class="dashboard">
+  <app-filter-bar (filterChange)="filterService.updateFilters($event)"></app-filter-bar>
+
+  <div class="kpi-row">
+    <app-kpi-card title="Total Sales" [value]="kpis.totalSales | currency"></app-kpi-card>
+    <app-kpi-card title="Gross Profit" [value]="kpis.grossProfit | currency"></app-kpi-card>
+    <app-kpi-card title="Margin %" [value]="(kpis.margin | percent)"></app-kpi-card>
+    <app-kpi-card title="Orders" [value]="kpis.totalOrders"></app-kpi-card>
+    <app-kpi-card title="Units" [value]="kpis.totalUnits"></app-kpi-card>
+    <app-kpi-card title="AOV" [value]="kpis.aov | currency"></app-kpi-card>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <canvas baseChart
+        [data]="salesByMonthData"
+        [options]="{ responsive: true }"
+        chartType="line">
+      </canvas>
+    </div>
+    <div class="chart-container">
+      <canvas baseChart
+        [data]="salesByTerritoryData"
+        chartType="bar">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <canvas baseChart
+        [data]="onlineOfflineData"
+        chartType="doughnut">
+      </canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Top 10 Products</h3>
+      <table>
+        <tr *ngFor="let p of topProducts">
+          <td>{{ p.productName }}</td>
+          <td>{{ p.totalSales | currency }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Map placeholder -->
+  <div class="map-container">
+    <h3>Sales by Territory</h3>
+    <pre>{{ mapData | json }}</pre>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="dashboard-page">
+  <app-filter-bar (filterChange)="filterService.updateFilters($event)"></app-filter-bar>
+
+  <h2>Salesperson Performance</h2>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Total Sales by Salesperson</h3>
+      <canvas baseChart
+        [data]="salesChartData"
+        chartType="bar">
+      </canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Gross Profit by Salesperson</h3>
+      <canvas baseChart
+        [data]="profitChartData"
+        chartType="bar">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Sales vs Quota</h3>
+      <table>
+        <tr><th>Salesperson</th><th>Total Sales</th><th>Quota</th><th>Achievement %</th></tr>
+        <tr *ngFor="let item of quotaData">
+          <td>{{ item.salesPersonName }}</td>
+          <td>{{ item.totalSales | currency }}</td>
+          <td>{{ item.quota | currency }}</td>
+          <td>{{ (item.totalSales / item.quota * 100) | number:'1.0-0' }}%</td>
+        </tr>
+      </table>
+    </div>
+    <div class="chart-container">
+      <h3>Salesperson Territory Map</h3>
+      <table>
+        <tr><th>Salesperson</th><th>Territory</th><th>Sales</th></tr>
+        <tr *ngFor="let item of territoryMap">
+          <td>{{ item.salesPerson }}</td><td>{{ item.territory }}</td>
+          <td>{{ item.sales | currency }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Customer</th>
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orders">
+        <td>{{ o.id }}</td>
+        <td>{{ o.orderDate | date }}</td>
+        <td>{{ o.customerName }}</td>
+        <td>{{ o.totalAmount | currency }}</td>
+        <td>{{ o.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

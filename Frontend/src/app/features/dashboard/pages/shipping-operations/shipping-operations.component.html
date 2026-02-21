@@ -1,0 +1,26 @@
+<!-- shipping-operations.component.html -->
+<div class="dashboard-page">
+  <app-filter-bar (filterChange)="filterService.updateFilters($event)"></app-filter-bar>
+
+  <h2>Shipping & Operations</h2>
+
+  <div class="kpi-row">
+    <app-kpi-card title="Avg Delivery (days)" [value]="avgDeliveryDays | number:'1.0-1'"></app-kpi-card>
+    <app-kpi-card title="Late Shipments" [value]="lateShipments.lateCount"></app-kpi-card>
+    <app-kpi-card title="Total Lines" [value]="lateShipments.totalLines"></app-kpi-card>
+    <app-kpi-card title="Late %" [value]="(lateShipments.latePercent | percent)"></app-kpi-card>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-container">
+      <h3>Sales by Ship Method</h3>
+      <canvas baseChart [data]="salesByMethodData" chartType="bar"></canvas>
+    </div>
+    <div class="chart-container">
+      <h3>Late Shipments Details</h3>
+      <p>Late Count: {{ lateShipments.lateCount }}</p>
+      <p>Total Lines: {{ lateShipments.totalLines }}</p>
+      <p>Late Percentage: {{ lateShipments.latePercent | percent }}</p>
+    </div>
+  </div>
+</div>

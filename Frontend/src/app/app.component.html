@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <a routerLink="/dashboard/executive-overview" routerLinkActive="active">Executive Overview</a>
+    <a routerLink="/dashboard/sales-trends" routerLinkActive="active">Sales Trends</a>
+    <a routerLink="/dashboard/product-performance" routerLinkActive="active">Product Performance</a>
+    <a routerLink="/dashboard/customer-analysis" routerLinkActive="active">Customer Analysis</a>
+    <a routerLink="/dashboard/salesperson-performance" routerLinkActive="active">Salesperson Performance</a>
+    <a routerLink="/dashboard/shipping-operations" routerLinkActive="active">Shipping & Operations</a>
+    <a routerLink="/dashboard/currency" routerLinkActive="active">Currency</a>
+    <a routerLink="/oltp/products" routerLinkActive="active">Product CRUD</a>
+    <a routerLink="/oltp/categories" routerLinkActive="active">Categories</a>
+    <a routerLink="/oltp/orders" routerLinkActive="active">Orders</a>
+  </div>
+  <div class="nav-right">
+    <span *ngIf="authService.getUser() as user">Welcome, {{ user.username }}</span>
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
