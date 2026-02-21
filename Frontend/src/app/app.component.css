@@ -1,22 +1,71 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(90deg, #0f172a, #1e3a8a);
+  color: #fff;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.35);
 }
+
+.nav-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
 .nav-left a {
-  color: white;
-  margin-right: 15px;
+  color: #dbeafe;
   text-decoration: none;
+  font-size: 0.92rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  transition: background-color 0.2s, color 0.2s;
 }
+
+.nav-left a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
 .nav-left a.active {
-  font-weight: bold;
-  text-decoration: underline;
+  color: #fff;
+  background-color: rgba(37, 99, 235, 0.55);
+  font-weight: 700;
 }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+}
+
 .nav-right span {
-  margin-right: 15px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
 }
-main {
-  padding: 20px;
+
+.nav-right button {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.nav-right button:hover {
+  background: #e2e8f0;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-right {
+    justify-content: space-between;
+  }
 }
