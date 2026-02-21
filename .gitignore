@@ -1,0 +1,39 @@
+# =========================
+# Frontend (Node/Angular)
+# =========================
+Frontend/node_modules/
+Frontend/dist/
+Frontend/.angular/
+Frontend/.cache/
+Frontend/coverage/
+Frontend/.eslintcache
+Frontend/*.log
+Frontend/npm-debug.log*
+Frontend/yarn-debug.log*
+Frontend/yarn-error.log*
+Frontend/pnpm-debug.log*
+
+# =========================
+# Backend (.NET)
+# =========================
+Backend/**/bin/
+Backend/**/obj/
+Backend/**/TestResults/
+Backend/**/*.user
+Backend/**/*.suo
+Backend/**/*.userosscache
+Backend/**/*.sln.docstates
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*~
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
