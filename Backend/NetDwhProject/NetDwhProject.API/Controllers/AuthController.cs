@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Text;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using NetDwhProject.Core.Entities.Oltp;
@@ -51,8 +52,13 @@ public class AuthController : ControllerBase
         await _unitOfWork.Users.AddAsync(user);
         await _unitOfWork.CompleteAsync();
 
-        // Assign default "User" role (assuming role ID 2 exists)
-        var userRole = new UserRole { UserId = user.Id, RoleId = 2 };
+        var userRoleEntity = (await _unitOfWork.Roles.FindAsync(r => r.Name == "User")).FirstOrDefault();
+        if (userRoleEntity == null)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Default user role is not configured.");
+        }
+
+        var userRole = new UserRole { UserId = user.Id, RoleId = userRoleEntity.Id };
         await _unitOfWork.UserRoles.AddAsync(userRole);
         await _unitOfWork.CompleteAsync();
 
@@ -76,6 +82,23 @@ public class AuthController : ControllerBase
 
         var token = GenerateJwtToken(user, roles);
         return Ok(new { token, user.Username, roles });
+    }
+
+    [Authorize]
+    [HttpGet("me")]
+    public IActionResult Me()
+    {
+        var username = User.Identity?.Name;
+        var roles = User.Claims
+            .Where(c => c.Type == ClaimTypes.Role)
+            .Select(c => c.Value)
+            .ToList();
+
+        return Ok(new
+        {
+            Username = username,
+            Roles = roles
+        });
     }
 
     private string GenerateJwtToken(User user, List<string> roles)
